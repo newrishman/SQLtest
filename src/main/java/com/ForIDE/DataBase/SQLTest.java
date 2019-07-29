@@ -1,9 +1,7 @@
 package com.ForIDE.DataBase;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SQLTest {
     private static String URL = "jdbc:mysql://localhost:3306/ForIDE?useSSL=false&serverTimezone=UTC";
@@ -14,14 +12,20 @@ public class SQLTest {
         Connection connection;
         try {
             connection = DriverManager.getConnection(URL, username, password);
+            Statement statement = connection.createStatement();
 
-            if (!connection.isClosed()) {
-                System.out.println("not closed");
-            }
-            connection.close();
+            statement.execute("insert  into  mercedescars (body, Engine, Model, Vin) values ('M-class', 642, 'ML350d', 166 )");
 
-            if (connection.isClosed()) {
-                System.out.println("is closed");
+            String comand = "select * from mercedescars";
+            ResultSet resultSet = statement.executeQuery(comand);
+
+            while (resultSet.next()) {
+                int one = resultSet.getInt("id");
+                String two = resultSet.getString("Body");
+                int three = resultSet.getInt("Engine");
+                String four = resultSet.getString("Model");
+                int five = resultSet.getInt("VIN");
+                System.out.println("Car ID is: " + one + ", Body: " + two + ", Engine: " + three + ", Model: " + four + ", VIN: " + five);
             }
 
         } catch (SQLException e) {
