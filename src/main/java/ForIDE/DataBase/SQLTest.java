@@ -1,4 +1,4 @@
-package com.ForIDE.DataBase;
+package ForIDE.DataBase;
 
 
 import java.sql.*;
