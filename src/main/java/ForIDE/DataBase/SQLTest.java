@@ -25,7 +25,7 @@ public class SQLTest {
                 int three = resultSet.getInt("Engine");
                 String four = resultSet.getString("Model");
                 int five = resultSet.getInt("VIN");
-                System.out.println("Car ID is: " + one + ", Body: " + two + ", Engine: " + three + ", Model: " + four + ", VIN: " + five);
+                System.out.println("This car ID is: " + one + ", Body: " + two + ", Engine: " + three + ", Model: " + four + ", VIN: " + five);
             }
 
         } catch (SQLException e) {
